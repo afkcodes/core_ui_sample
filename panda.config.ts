@@ -368,7 +368,9 @@ export default defineConfig({
 
   staticCss: {
     css: [],
-    recipes: {},
+    recipes: {
+      button: ['*'],
+    },
   },
   outdir: 'styled-system',
   jsxFramework: 'react',
