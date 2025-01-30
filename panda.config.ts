@@ -117,102 +117,56 @@ export default defineConfig({
       },
       semanticTokens: {
         colors: {
-          // You can reference other tokens here
           background: { value: '{colors.gray.50}' },
           foreground: { value: '{colors.gray.900}' },
         },
       },
-      // recipes: {
-      //   button: {
-      //     description: 'A button component',
-      //     base: {
-      //       display: 'inline-flex',
-      //       alignItems: 'center',
-      //       justifyContent: 'center',
-      //       borderRadius: 'md',
-      //       fontWeight: 'semibold',
-      //       cursor: 'pointer',
-      //       transition: 'all 0.2s',
-      //       _disabled: {
-      //         cursor: 'not-allowed',
-      //         opacity: 0.5,
-      //       },
-      //     },
-      //     variants: {
-      //       size: {
-      //         sm: { px: '3', py: '2', fontSize: 'sm' },
-      //         md: { px: '4', py: '2', fontSize: 'base' },
-      //         lg: { px: '5', py: '3', fontSize: 'lg' },
-      //       },
-      //       variant: {
-      //         solid: {
-      //           bg: 'primary',
-      //           color: 'white',
-      //           _hover: { opacity: 0.9 },
-      //         },
-      //         outline: {
-      //           borderWidth: '1px',
-      //           borderColor: 'primary',
-      //           color: 'primary',
-      //           _hover: { bg: 'primary', color: 'white' },
-      //         },
-      //         ghost: {
-      //           color: 'primary',
-      //           _hover: { bg: 'gray.100' },
-      //         },
-      //       },
-      //     },
-      //     defaultVariants: {
-      //       size: 'md',
-      //       variant: 'solid',
-      //     },
-      //   },
-      // },
+      
     },
   },
 
-  // Define your patterns/recipes
-  patterns: {
-    extend: {
-      // Layout patterns
-      container: {
-        transform(props) {
-          return {
-            maxWidth: props.size ?? '60rem',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            paddingLeft: props.padding ?? '1rem',
-            paddingRight: props.padding ?? '1rem',
-          };
-        },
-      },
-      flex: {
-        transform(props) {
-          return {
-            display: 'flex',
-            flexDirection: props.direction ?? 'row',
-            alignItems: props.align ?? 'stretch',
-            justifyContent: props.justify ?? 'flex-start',
-            gap: props.gap ?? '0',
-          };
-        },
-      },
-    },
-  },
+  // // Define your patterns/recipes
+  // patterns: {
+  //   extend: {
+  //     // Layout patterns
+  //     container: {
+  //       transform(props) {
+  //         return {
+  //           maxWidth: props.size ?? '60rem',
+  //           marginLeft: 'auto',
+  //           marginRight: 'auto',
+  //           paddingLeft: props.padding ?? '1rem',
+  //           paddingRight: props.padding ?? '1rem',
+  //         };
+  //       },
+  //     },
+  //     flex: {
+  //       transform(props) {
+  //         return {
+  //           display: 'flex',
+  //           flexDirection: props.direction ?? 'row',
+  //           alignItems: props.align ?? 'stretch',
+  //           justifyContent: props.justify ?? 'flex-start',
+  //           gap: props.gap ?? '0',
+  //         };
+  //       },
+  //     },
+  //   },
+  // },
 
-  // Configuration for CSS generation
-  utilities: {
-    extend: {
-      // Add custom utilities here
-    },
-  },
+  // // Configuration for CSS generation
+  // utilities: {
+  //   extend: {
+  //     // Add custom utilities here
+  //   },
+  // },
 
-  conditions: {
-    extend: {
-      // Add custom conditions here
-      hoverFocus: '&:hover, &:focus',
-    },
-  },
+  // conditions: {
+  //   extend: {
+  //     // Add custom conditions here
+  //     hoverFocus: '&:hover, &:focus',
+  //   },
+  // },
 
   // Enable CSS reset
   preflight: true,

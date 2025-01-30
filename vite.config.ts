@@ -1,49 +1,3 @@
-// import react from '@vitejs/plugin-react';
-// import { resolve } from 'path';
-// import { defineConfig } from 'vite';
-// import dts from 'vite-plugin-dts';
-
-// export default defineConfig({
-//   plugins: [
-//     react(),
-//     dts({
-//       insertTypesEntry: true,
-//       include: ['src/'],
-//     }),
-//   ],
-//   build: {
-//     lib: {
-//       entry: resolve(__dirname, 'src/index.ts'),
-//       name: 'core_ui',
-//       fileName: (format) => `index.${format}.js`,
-//     },
-//     rollupOptions: {
-//       external: ['react', 'react-dom', '@ark-ui/react'],
-//       output: [
-//         {
-//           format: 'es',
-//           globals: {
-//             react: 'React',
-//             'react-dom': 'ReactDOM',
-//             '@ark-ui/react': 'ArkUI',
-//           },
-//         },
-//         {
-//           format: 'cjs',
-//           globals: {
-//             react: 'React',
-//             'react-dom': 'ReactDOM',
-//             '@ark-ui/react': 'ArkUI',
-//           },
-//         },
-//       ],
-//     },
-//     sourcemap: true,
-//     cssCodeSplit: false,
-//     cssMinify: true,
-//   },
-// });
-
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
@@ -54,10 +8,11 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      include: ['src/'],
+      include: ['src/**/*'],
     }),
   ],
   build: {
+    outDir: 'dist',
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'core_ui',
@@ -67,37 +22,36 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', '@ark-ui/react'],
       output: {
+        dir: 'dist',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           '@ark-ui/react': 'ArkUI',
         },
-        assetFileNames: 'style.css',
-        // Optimize for treeshaking
-        manualChunks: undefined,
-        inlineDynamicImports: false,
-        // Preserve modules for better treeshaking
-        preserveModules: true,
-        preserveModulesRoot: 'src',
+        chunkFileNames: '[name].js',
+        compact: true,
+        minifyInternalExports: true,
       },
       treeshake: {
-        // Advanced treeshaking options
         moduleSideEffects: false,
         propertyReadSideEffects: false,
         tryCatchDeoptimization: false,
         unknownGlobalSideEffects: false,
       },
     },
-    // Additional build optimizations
-    minify: 'esbuild',
+
+    emptyOutDir: true,
+    minify: true,
     sourcemap: true,
-    cssCodeSplit: false,
-    cssMinify: true,
-    // Ensure no side effects
-    modulePreload: {
-      polyfill: false,
-    },
+    copyPublicDir: false,
+  },
+  esbuild: {
+    minifyWhitespace: true,
+    treeShaking: true,
+    drop: ['console', 'debugger'],
     target: 'esnext',
-    reportCompressedSize: true,
+    keepNames: false,
+    pure: ['jsx'],
+    sourcemap: true,
   },
 });
