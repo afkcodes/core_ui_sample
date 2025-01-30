@@ -1,4 +1,5 @@
 import '../styled-system/styles.css';
+export { DensityProvider, useDensity } from '../src/contexts/';
 export { Button } from './components';
 export type { ButtonProps } from './components';
 

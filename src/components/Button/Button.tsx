@@ -55,6 +55,33 @@
 // // Export the button component
 // export const Button = StyledButton as React.FC<ButtonProps>;
 
+// // src/components/Button/Button.tsx
+// import { ark } from '@ark-ui/react';
+// import * as React from 'react';
+// import type { ButtonVariantProps } from '../../../styled-system/recipes';
+// import { button } from '../../../styled-system/recipes';
+
+// export interface ButtonProps
+//   extends ButtonVariantProps,
+//     Omit<React.ComponentPropsWithRef<typeof ark.button>, keyof ButtonVariantProps> {
+//   leftIcon?: React.ReactNode;
+//   rightIcon?: React.ReactNode;
+// }
+
+// export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+//   ({ variant, size, leftIcon, rightIcon, children, ...props }, ref) => {
+//     return (
+//       <ark.button ref={ref} className={button({ variant, size })} {...props}>
+//         {leftIcon && <span>{leftIcon}</span>}
+//         {children}
+//         {rightIcon && <span>{rightIcon}</span>}
+//       </ark.button>
+//     );
+//   }
+// );
+
+// Button.displayName = 'Button';
+
 // src/components/Button/Button.tsx
 import { ark } from '@ark-ui/react';
 import * as React from 'react';

@@ -190,6 +190,65 @@
 // });
 
 // panda.config.ts
+// import { defineConfig } from '@pandacss/dev';
+// import { buttonRecipe } from './src/recipes/button.recipe';
+
+// export default defineConfig({
+//   preflight: true,
+//   include: ['./src/**/*.{js,jsx,ts,tsx}'],
+//   exclude: [],
+//   theme: {
+//     extend: {
+//       tokens: {
+//         colors: {
+//           primary: {
+//             50: { value: '#F0F2FF' },
+//             100: { value: '#DEE1FE' },
+//             200: { value: '#BFC4FC' },
+//             300: { value: '#9EA3FA' },
+//             400: { value: '#7D82F8' },
+//             500: { value: '#5C63F6' },
+//             600: { value: '#4A52D0' },
+//             700: { value: '#4A52D0' },
+//             800: { value: '#262A84' },
+//             900: { value: '#131549' },
+//           },
+//         },
+//         sizes: {
+//           '8': { value: '2rem' },
+//           '10': { value: '2.5rem' },
+//           '12': { value: '3rem' },
+//         },
+//         spacing: {
+//           '2': { value: '0.5rem' },
+//           '3': { value: '0.75rem' },
+//           '4': { value: '1rem' },
+//           '6': { value: '1.5rem' },
+//         },
+//         radii: {
+//           md: { value: '0.375rem' },
+//         },
+//         fontSizes: {
+//           sm: { value: '0.875rem' },
+//           md: { value: '1rem' },
+//           lg: { value: '1.125rem' },
+//         },
+//       },
+//     },
+//     recipes: {
+//       button: buttonRecipe,
+//     },
+//   },
+//   staticCss: {
+//     css: [],
+//     recipes: {},
+//   },
+//   outdir: 'styled-system',
+//   jsxFramework: 'react',
+//   clean: true,
+// });
+
+// panda.config.ts
 import { defineConfig } from '@pandacss/dev';
 import { buttonRecipe } from './src/recipes/button.recipe';
 
@@ -197,8 +256,94 @@ export default defineConfig({
   preflight: true,
   include: ['./src/**/*.{js,jsx,ts,tsx}'],
   exclude: [],
+  conditions: {
+    extend: {
+      defaultDensity: '[data-density=default] &',
+      compactDensity: '[data-density=compact] &',
+    },
+  },
   theme: {
     extend: {
+      semanticTokens: {
+        spacing: {
+          // Button paddings
+          'button-x-sm': {
+            value: {
+              _defaultDensity: '0.75rem', // 3
+              _compactDensity: '0.5rem', // 2
+            },
+          },
+          'button-x-md': {
+            value: {
+              _defaultDensity: '1rem', // 4
+              _compactDensity: '0.75rem', // 3
+            },
+          },
+          'button-x-lg': {
+            value: {
+              _defaultDensity: '1.5rem', // 6
+              _compactDensity: '1rem', // 4
+            },
+          },
+          'button-y-sm': {
+            value: {
+              _defaultDensity: '0.5rem', // 2
+              _compactDensity: '0.25rem', // 1
+            },
+          },
+          'button-y-md': {
+            value: {
+              _defaultDensity: '0.5rem', // 2
+              _compactDensity: '0.375rem', // 1.5
+            },
+          },
+          'button-y-lg': {
+            value: {
+              _defaultDensity: '0.75rem', // 3
+              _compactDensity: '0.5rem', // 2
+            },
+          },
+          // Button gaps
+          'button-gap-sm': {
+            value: {
+              _defaultDensity: '0.5rem', // 2
+              _compactDensity: '0.25rem', // 1
+            },
+          },
+          'button-gap-md': {
+            value: {
+              _defaultDensity: '0.5rem', // 2
+              _compactDensity: '0.375rem', // 1.5
+            },
+          },
+          'button-gap-lg': {
+            value: {
+              _defaultDensity: '0.75rem', // 3
+              _compactDensity: '0.5rem', // 2
+            },
+          },
+        },
+        sizes: {
+          'button-min-w-sm': {
+            value: {
+              _defaultDensity: '2rem', // 8
+              _compactDensity: '1.75rem', // 7
+            },
+          },
+          'button-min-w-md': {
+            value: {
+              _defaultDensity: '2.5rem', // 10
+              _compactDensity: '2.25rem', // 9
+            },
+          },
+          'button-min-w-lg': {
+            value: {
+              _defaultDensity: '3rem', // 12
+              _compactDensity: '2.75rem', // 11
+            },
+          },
+        },
+      },
       tokens: {
         colors: {
           primary: {
@@ -214,36 +359,17 @@ export default defineConfig({
             900: { value: '#131549' },
           },
         },
-        sizes: {
-          '8': { value: '2rem' },
-          '10': { value: '2.5rem' },
-          '12': { value: '3rem' },
-        },
-        spacing: {
-          '2': { value: '0.5rem' },
-          '3': { value: '0.75rem' },
-          '4': { value: '1rem' },
-          '6': { value: '1.5rem' },
-        },
-        radii: {
-          md: { value: '0.375rem' },
-        },
-        fontSizes: {
-          sm: { value: '0.875rem' },
-          md: { value: '1rem' },
-          lg: { value: '1.125rem' },
-        },
       },
     },
     recipes: {
       button: buttonRecipe,
     },
   },
+
   staticCss: {
     css: [],
     recipes: {},
   },
   outdir: 'styled-system',
   jsxFramework: 'react',
-  clean: true,
 });
