@@ -20,7 +20,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@ark-ui/react'],
+      external: ['react', 'react-dom', '@ark-ui/react', 'react/jsx-runtime'],
       output: {
         dir: 'dist',
         globals: {
